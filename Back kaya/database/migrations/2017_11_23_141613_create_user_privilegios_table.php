@@ -16,8 +16,8 @@ class CreateUserPrivilegiosTable extends Migration
         Schema::create('user_privilegios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome_privilegio');
-            $table->string('usuario_id');
-            $table->foreign('usuario_id')->references('users')->on('users')->onDelete('Cascade');
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
